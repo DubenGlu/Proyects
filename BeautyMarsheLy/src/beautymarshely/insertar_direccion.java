@@ -1,0 +1,330 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package beautymarshely;
+
+import static beautymarshely.ConexionDB.getConexion;
+import static beautymarshely.Direcciones.instanciado_como;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author rey_r
+ */
+public class insertar_direccion extends javax.swing.JFrame {
+
+    int contadordatos;
+    public insertar_direccion() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        ImageIcon img = new ImageIcon("src/imagenes/BeautyMarshe_Ly.png");
+        this.setIconImage(img.getImage());
+    }
+
+    public void contarID(){
+        try {
+                    Connection conect = getConexion();
+                    Statement leer = conect.createStatement();
+                    ResultSet result = leer.executeQuery("select count(*) from direccion");
+                    
+                    int[] datos = new int[1];
+                    
+                    while (result.next()) {
+                        datos[0] = result.getInt(1);
+                    }
+                    
+                    contadordatos = datos[0]+1;
+                    
+                    txt_contadorID.setText(""+contadordatos);
+                    
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error en el count: "+e);
+                }
+    }
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        txt_titulo = new javax.swing.JLabel();
+        txt_ID = new javax.swing.JLabel();
+        txt_contadorID = new javax.swing.JLabel();
+        txt_calle = new javax.swing.JLabel();
+        txt_numero = new javax.swing.JLabel();
+        txt_colonia = new javax.swing.JLabel();
+        txt_ciudad = new javax.swing.JLabel();
+        txt_estado = new javax.swing.JLabel();
+        txf_calle = new javax.swing.JTextField();
+        txf_numero = new javax.swing.JTextField();
+        txf_colonia = new javax.swing.JTextField();
+        txf_ciudad = new javax.swing.JTextField();
+        txf_estado = new javax.swing.JTextField();
+        btn_cancelar = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_titulo.setText("Insertar Direccion");
+
+        txt_ID.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        txt_ID.setText("ID:");
+
+        txt_contadorID.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        txt_contadorID.setText("0");
+
+        txt_calle.setText("Calle:");
+
+        txt_numero.setText("Numero:");
+
+        txt_colonia.setText("Colonia:");
+
+        txt_ciudad.setText("Ciudad:");
+
+        txt_estado.setText("Estado");
+
+        txf_ciudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txf_ciudadActionPerformed(evt);
+            }
+        });
+
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(txt_titulo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(txt_ID)
+                        .addGap(15, 15, 15)
+                        .addComponent(txt_contadorID))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btn_limpiar)
+                            .addGap(34, 34, 34)
+                            .addComponent(btn_guardar))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txt_numero)
+                                        .addComponent(txt_calle)
+                                        .addComponent(txt_colonia)
+                                        .addComponent(txt_ciudad)
+                                        .addComponent(txt_estado))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txf_calle)
+                                        .addComponent(txf_numero)
+                                        .addComponent(txf_colonia)
+                                        .addComponent(txf_ciudad)
+                                        .addComponent(txf_estado, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(7, 7, 7)
+                                    .addComponent(btn_cancelar))))))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(txt_titulo)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_ID)
+                            .addComponent(txt_contadorID))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txf_calle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_calle))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_numero)
+                            .addComponent(txf_numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_colonia)
+                            .addComponent(txf_colonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_ciudad)
+                            .addComponent(txf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_estado))
+                    .addComponent(txf_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cancelar)
+                    .addComponent(btn_limpiar)
+                    .addComponent(btn_guardar))
+                .addGap(36, 36, 36))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 440));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void txf_ciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_ciudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txf_ciudadActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        // TODO add your handling code here:
+        if (instanciado_como == 1) {
+            insertar_sucursal ob = new insertar_sucursal();
+            ob.setVisible(true);
+            this.dispose();
+        }else if (instanciado_como == 0) {
+            Sucursales ob = new Sucursales();
+            ob.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txf_calle.setText("");
+        txf_ciudad.setText("");
+        txf_colonia.setText("");
+        txf_estado.setText("");
+        txf_numero.setText("");
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        try {
+             ConexionDB.getConexion();
+            int id_direccion = contadordatos;
+            String calle = txf_calle.getText();
+            String numero = txf_numero.getText();
+            String colonia = txf_colonia.getText();
+            String ciudad = txf_ciudad.getText();
+            String estado = txf_estado.getText();
+
+            Connection con = ConexionDB.getConexion();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO  DIRECCION (ID_DIRECCION, CALLE, NUMERO, COLONIA, CIUDAD, ESTADO) VALUES(?,?,?,?,?,?)");
+            ps.setInt(1, id_direccion);
+            ps.setString(2, calle);
+            ps.setString(3, numero);
+            ps.setString(4, colonia);
+            ps.setString(5, ciudad);
+            ps.setString(6, estado);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Direccion insertada correctamente");
+            btn_limpiarActionPerformed(evt);
+
+            btn_cancelarActionPerformed(evt);
+
+        } catch (SQLException sql) {
+            JOptionPane.showMessageDialog(null, "Error en el insert: "+sql, "Error en SQL", JOptionPane.ERROR_MESSAGE);
+
+        }
+        
+        
+        
+       
+       
+
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        contarID();
+    }//GEN-LAST:event_formWindowOpened
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(insertar_direccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(insertar_direccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(insertar_direccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(insertar_direccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new insertar_direccion().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_limpiar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txf_calle;
+    private javax.swing.JTextField txf_ciudad;
+    private javax.swing.JTextField txf_colonia;
+    private javax.swing.JTextField txf_estado;
+    private javax.swing.JTextField txf_numero;
+    private javax.swing.JLabel txt_ID;
+    private javax.swing.JLabel txt_calle;
+    private javax.swing.JLabel txt_ciudad;
+    private javax.swing.JLabel txt_colonia;
+    private javax.swing.JLabel txt_contadorID;
+    private javax.swing.JLabel txt_estado;
+    private javax.swing.JLabel txt_numero;
+    private javax.swing.JLabel txt_titulo;
+    // End of variables declaration//GEN-END:variables
+}
